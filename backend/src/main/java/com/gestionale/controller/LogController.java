@@ -50,10 +50,12 @@ public class LogController {
 
     @GetMapping("/logsUser/{id_admin}")
     public List<Log> getUserLogs(@PathVariable Integer id_admin,@RequestParam Integer id_utente){
-               System.out.print("------------------------------");
-        System.out.print(id_admin);
-        System.out.print(id_utente);
-
         return logService.getUserLogs(id_admin,id_utente);
     }
+    @PostMapping("/updateHour/{id_admin}")
+    public Log updateHour(@RequestBody Log log,@PathVariable Integer id_admin){
+
+        return logService.updateHour(log,id_admin);
+    }
+
 }

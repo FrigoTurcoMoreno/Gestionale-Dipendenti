@@ -19,4 +19,6 @@ public interface LogService {
     public List<Log> getMyLogs(Integer id_utente);
 
     List<Log> getUserLogs(Integer idAdmin, Integer idUtente);
+
+    Log updateHour(Log log,Integer id_admin);
 }
