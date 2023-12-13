@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class UtenteServiceImpl implements UtenteService{
 
-    private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     @Autowired
     private UtenteRepository utenteRepository;
@@ -35,7 +35,6 @@ public class UtenteServiceImpl implements UtenteService{
         }
         else return null;
     }
-
 
     //metodo per il recupero di un utente tramite l'email e la password
     //così da fargli fare la login
