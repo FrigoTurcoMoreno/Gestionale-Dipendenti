@@ -11,10 +11,24 @@
         </thead>
         <tbody>
           <tr *ngFor="let log of logs">
-            <td>{{ log.entrata }}</td>
-            <td>{{ log.uscita }}</td>
+            <td *ngIf="idLogToUpdate!=null && idLogToUpdate==log.id; else mostraOraEntrata">
+              <input type="time" id="entrata" name="entrata" [(ngModel)]="oraDataEntrataModificata">
+            </td>
+            <td *ngIf="idLogToUpdate!=null && idLogToUpdate==log.id; else mostraOraUscita">
+              <input type="time" id="uscita" name="uscita" [(ngModel)]="oraDataUscitaModificata">
+            </td>
+            
+            <ng-template #mostraOraEntrata>
+              <td> {{log.entrata.toDateString()}} {{formatOra(log.entrata)}}</td>
+            </ng-template>
+            <ng-template #mostraOraUscita>
+              <td>{{log.uscita.toDateString()}} {{formatOra(log.uscita)}}</td>
+            </ng-template>
+            
             <td>{{ log.u.nome }}</td>
             <td *ngIf="isAdmin()"><button (click)="cancellaLog(log.id)" class="btn btn-danger"> cancella</button></td>
+            <td *ngIf="isAdmin() && log.id!=idLogToUpdate"><button (click)="updateHour(log.id)" class="btn btn-danger"> update</button></td>
+            <td *ngIf="isAdmin() && log.id==idLogToUpdate"><button (click)="updateDate()" class="btn btn-danger"> send</button></td>
             
           </tr>
         </tbody>

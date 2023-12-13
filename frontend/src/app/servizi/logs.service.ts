@@ -75,6 +75,8 @@ export class LogsService{
     }
     return this.http.delete<number>(url+'/log/'+this.utenteService.getId(),{params});
   }
-
+  cambiaData(log:Logs){
+    return this.http.post<any>(url+'/updateHour',log);
+  }
 
 }

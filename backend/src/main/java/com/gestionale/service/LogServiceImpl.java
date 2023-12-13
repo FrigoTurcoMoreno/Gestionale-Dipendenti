@@ -91,5 +91,16 @@ public class LogServiceImpl implements LogService{
         }
     }
 
+    @Override
+    public Log updateHour(Log log) {
+        Log updateLog= logRepository.findById(log.getId()).orElse(null);
+        if(updateLog!=null){
+            updateLog.setUscita(log.getUscita());
+            updateLog.setEntrata(log.getEntrata());
+            logRepository.save(updateLog);
+        }
+        return updateLog;
+    }
+
 
 }
