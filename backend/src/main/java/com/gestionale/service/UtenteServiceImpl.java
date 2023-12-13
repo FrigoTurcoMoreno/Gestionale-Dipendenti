@@ -11,6 +11,8 @@ import java.util.List;
 @Service
 public class UtenteServiceImpl implements UtenteService{
 
+    private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
     @Autowired
     private UtenteRepository utenteRepository;
 
@@ -22,7 +24,15 @@ public class UtenteServiceImpl implements UtenteService{
 
         Utente registratore = utenteRepository.findById(id).orElse(null);
 
-        if (registratore != null && registratore.isAdmin()) return utenteRepository.save(u);
+        if (registratore != null && registratore.isAdmin()) {
+            //recupero la password
+            String psw = u.getPassword();
+            //creazione dell'hash
+            String hashedPassword = encoder.encode(psw);
+            u.setPassword(hashedPassword);
+            u.setAbilitato(true);
+            return utenteRepository.save(u);
+        }
         else return null;
     }
 
@@ -31,11 +41,8 @@ public class UtenteServiceImpl implements UtenteService{
     //così da fargli fare la login
     @Override
     public Utente getUtente(String email, String password) {
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        String hashedPassword = encoder.encode(password);
-        System.out.print("HASHED"+hashedPassword);
-        Utente utente= utenteRepository.findByEmailAndPassword(email, password).orElse(null);
-        if(utente.isAbilitato()){
+        Utente utente = utenteRepository.findByEmail(email).orElse(null);
+        if(utente != null && utente.isAbilitato() && encoder.matches(password, utente.getPassword())){
             return utente;
         }else{
             return null;
@@ -56,7 +63,6 @@ public class UtenteServiceImpl implements UtenteService{
     @Override
     public Utente abilitaDisabilita(Integer idAdmin, Utente utente) {
         Utente admin = utenteRepository.findById(idAdmin).orElse(null);
-        System.out.print(admin.getEmail());
         if(admin!=null && admin.isAdmin()){
             utente.setAbilitato(!utente.isAbilitato());
             utenteRepository.save(utente);
