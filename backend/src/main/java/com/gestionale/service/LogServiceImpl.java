@@ -22,6 +22,11 @@ public class LogServiceImpl implements LogService{
     private UtenteRepository utenteRepository;
 
     @Override
+    public Integer oreLavorate(Integer id_utente) {
+        return logRepository.getHourInMonth(id_utente);
+    }
+
+    @Override
     public Log getLogAttivi(Integer id_utente) {
         Optional<Log> logAttivo= logRepository.logAttivo(id_utente);
         if(logAttivo.isPresent()){

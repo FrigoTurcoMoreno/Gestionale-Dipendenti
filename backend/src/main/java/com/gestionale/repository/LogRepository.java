@@ -20,5 +20,6 @@ public interface LogRepository extends CrudRepository<Log, Integer> {
     @Query(value = "SELECT * FROM logs WHERE id_utente = ?1 AND uscita IS NOT NULL", nativeQuery = true)
     public List<Log> getMyLogs(Integer id_utente);
 
-
+    @Query(value="SELECT SUM(TIME_TO_SEC(TIMEDIFF(uscita, entrata))) / 3600 AS ore_lavorate FROM logs WHERE id_utente = ?1  AND YEAR(uscita) = YEAR(CURDATE()) AND MONTH(uscita) = MONTH(CURDATE()) GROUP BY id_utente, MONTH(uscita);",nativeQuery = true)
+    public Integer getHourInMonth(Integer id_utente);
 }
