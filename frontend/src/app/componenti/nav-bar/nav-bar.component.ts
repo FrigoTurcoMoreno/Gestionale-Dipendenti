@@ -26,4 +26,9 @@ export class NavBarComponent {
   isLogged(){
     return this.utenteService.is_logged;
   }
+
+  logout(){
+    this.utenteService.logout()
+    this.router.navigate(['/login']);
+  }
 }

@@ -16,7 +16,7 @@ export class UtenteService {
       'Access-Control-Allow-Origin':'*'
     })
   };
-  private utente!:Utente;
+  private utente?:Utente;
   is_logged:boolean=false;
   UserToUpdate!: Utente;
   
@@ -45,17 +45,17 @@ export class UtenteService {
     return this.http.get(url + "/utenti/" + this.getId());
   }
   isAbilitato(): boolean {
-    return this.utente.abilitato;
+    return this.utente!.abilitato;
   }
 
   isAdmin(): boolean {
-    return this.utente.admin;
+    return this.utente!.admin;
   }
   setUtente(utente: Utente){
     this.utente=utente;
   }
   getId(){
-    return this.utente.id;
+    return this.utente!.id;
   }
   getUtente() {
     return this.utente;
@@ -77,5 +77,10 @@ export class UtenteService {
       user,
       this.httpOptions
     );
+  }
+
+  logout(){
+    this.utente = undefined
+    this.is_logged = false
   }
 }
