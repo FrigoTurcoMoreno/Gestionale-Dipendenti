@@ -5,6 +5,9 @@ import com.gestionale.model.Log;
 import java.util.List;
 
 public interface LogService {
+
+    public Integer oreLavorate(Integer id_utente);
+
     public Log getLogAttivi(Integer id_utente);
 
     public Log creaLog(Integer id_utente);

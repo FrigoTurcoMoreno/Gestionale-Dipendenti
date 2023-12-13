@@ -15,6 +15,11 @@ public class LogController {
     private LogService logService;
 
     //endpoint per vedere se un utente ha un log in corso
+    @GetMapping("/oreLavorate")
+    public Integer oreLavorate(@RequestParam Integer id_utente){
+        return logService.oreLavorate(id_utente);
+    }
+
     @GetMapping("/log")
     public Log logAttivo(@RequestParam Integer id_utente){
         return logService.getLogAttivi(id_utente);
