@@ -3,6 +3,7 @@ package com.gestionale.service;
 import com.gestionale.model.Utente;
 import com.gestionale.repository.UtenteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,6 +31,9 @@ public class UtenteServiceImpl implements UtenteService{
     //così da fargli fare la login
     @Override
     public Utente getUtente(String email, String password) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String hashedPassword = encoder.encode(password);
+        System.out.print("HASHED"+hashedPassword);
         Utente utente= utenteRepository.findByEmailAndPassword(email, password).orElse(null);
         if(utente.isAbilitato()){
             return utente;
