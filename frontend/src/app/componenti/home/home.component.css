@@ -5,15 +5,6 @@
 /* height: 100vh; Altezza al 100% della viewport (schermo) */
 /* } */
 
-body {
-  font-family: Segoe UI;
-  margin: 0;
-  padding: 0;
-  background: #f7f5ff;
-  margin: 0 120px;
-  font-family: "Roboto", Arial;
-}
-
 root:scrollbar {
   width: 10px;
 }
