@@ -22,6 +22,16 @@ public class LogServiceImpl implements LogService{
     private UtenteRepository utenteRepository;
 
     @Override
+    public boolean eliminaLog(Integer id_log){
+        if(logRepository.findById(id_log).isPresent()){
+            logRepository.deleteById(id_log);
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    @Override
     public Integer oreLavorate(Integer id_utente) {
         return logRepository.getHourInMonth(id_utente);
     }
