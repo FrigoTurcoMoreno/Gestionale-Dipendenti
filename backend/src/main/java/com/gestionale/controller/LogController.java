@@ -52,10 +52,10 @@ public class LogController {
     public List<Log> getUserLogs(@PathVariable Integer id_admin,@RequestParam Integer id_utente){
         return logService.getUserLogs(id_admin,id_utente);
     }
-    @PostMapping("/updateHour")
-    public Log updateHour(@RequestBody Log log){
+    @PostMapping("/updateHour/{id_admin}")
+    public Log updateHour(@RequestBody Log log,@PathVariable Integer id_admin){
 
-        return logService.updateHour(log);
+        return logService.updateHour(log,id_admin);
     }
 
 }

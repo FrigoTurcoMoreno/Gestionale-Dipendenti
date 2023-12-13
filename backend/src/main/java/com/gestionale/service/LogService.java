@@ -20,5 +20,5 @@ public interface LogService {
 
     List<Log> getUserLogs(Integer idAdmin, Integer idUtente);
 
-    Log updateHour(Log log);
+    Log updateHour(Log log,Integer id_admin);
 }
