@@ -1,0 +1,19 @@
+<div class="p-3">
+    <h2 class="text-center">Storico Logs</h2>
+    <table class="pt-2 mt-3">
+        <thead>
+          <tr>
+            <th>Entrata</th>
+            <th>Uscita</th>
+            <th>Nome Utente</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let log of logs">
+            <td>{{ log.entrata }}</td>
+            <td>{{ log.uscita }}</td>
+            <td>{{ log.u.nome }}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>

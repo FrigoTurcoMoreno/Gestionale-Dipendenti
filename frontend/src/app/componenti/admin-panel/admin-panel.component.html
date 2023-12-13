@@ -1,0 +1,70 @@
+<div class="p-3">
+  <h2 class="text-center">Gestionale Dipendenti</h2>
+
+  <div class="d-flex flex-column">
+    <div>
+      <button (click)="toRegister()" type="button" class="btn btn-primary mb-1">
+        Inserisci Utente
+      </button>
+      <button (click)="storicoLogs()" type="button" class="btn btn-primary mb-1">
+        Storico Logs
+      </button>
+    </div>
+  </div>
+
+  <table class="pt-2 mt-3">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Cognome</th>
+        <th>Modifica Dipendente</th>
+        <th>Elimina Dipendente</th>
+        <th>Visualizza Logs</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr *ngFor="let utente of utenti" >
+        
+        <td *ngIf="utente.id!=getIdAdmin()">
+          <p #idDaModificare>{{ utente.id }}</p>
+        </td>
+        <td *ngIf="utente.id!=getIdAdmin()">{{ utente.nome }}</td>
+        <td *ngIf="utente.id!=getIdAdmin()">{{ utente.cognome }}</td>
+        <td *ngIf="utente.id!=getIdAdmin()">
+          <div>
+            <!-- aggiunto utente -->
+            <button (click)="modifica(utente)" class="btn btn-danger">
+              Modifica
+            </button>
+          </div>
+        </td>
+        <td *ngIf="utente.id!=getIdAdmin()">
+          <div *ngIf="utente.abilitato; else Abilita">
+            <button (click)="disabilita(utente)" class="btn btn-danger">
+              Disabilita
+            </button>
+          </div>
+          <ng-template #Abilita>
+            <div >
+              <button (click)="disabilita(utente)" class="btn btn-danger">
+                Abilita
+              </button>
+            </div>
+          </ng-template>
+        </td>
+        <td *ngIf="utente.id!=getIdAdmin()">
+          <div>
+            <button (click)="visualizzaLogs(utente.id)" class="btn btn-primary">
+              Visualizza Logs
+            </button>
+          </div>
+        </td>
+      
+      </tr>
+      <tr></tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,11 @@
+<div *ngIf="entrato; then esci; else entra"></div>
+<ng-template #entra >
+  <div class="contenitore" #entra>
+    <button class="btn btn-primary" (click)="accedi()">Entra</button>
+  </div>
+</ng-template>
+<ng-template #esci>
+  <div class="contenitore">
+  <button class="btn btn-danger" (click)="exit()">Esci</button>
+</div>
+</ng-template>

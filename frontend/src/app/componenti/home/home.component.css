@@ -1,0 +1,7 @@
+.contenitore {
+  display: flex;
+  align-items: center; /* Allineamento verticale al centro */
+  justify-content: center; /* Allineamento orizzontale al centro */
+  height: 100vh; /* Altezza al 100% della viewport (schermo) */
+}
+
