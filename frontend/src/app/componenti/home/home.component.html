@@ -1,11 +1,119 @@
-<div *ngIf="entrato; then esci; else entra"></div>
-<ng-template #entra >
-  <div class="contenitore" #entra>
-    <button class="btn btn-primary" (click)="accedi()">Entra</button>
+<div class="info-card">
+  <div class="info-text-ctn">
+    <div class="info-head">
+      <h1>Welcolme <br />It can be a good day</h1>
+    </div>
+    <div class="info-text">
+      <p>
+        Get Free Education And high quailty <br />
+        educational system to help you advance in <br />
+        your career, learn a new language by
+      </p>
+    </div>
+
+    <div *ngIf="entrato; then esci; else entra"></div>
+    <ng-template #entra>
+      <div class="info-buton">
+        <button (click)="accedi()">Timbra Entrata</button>
+      </div>
+    </ng-template>
+    <ng-template #esci>
+      <div class="info-buton">
+        <button (click)="exit()">Timbra Uscita</button>
+      </div>
+    </ng-template>
+
+    <!-- <div class="info-buton">
+      <button>Timbra Uscita</button>
+    </div> -->
   </div>
-</ng-template>
-<ng-template #esci>
-  <div class="contenitore">
-  <button class="btn btn-danger" (click)="exit()">Esci</button>
+  <div class="info-image">
+    <img
+      src="https://cdni.iconscout.com/illustration/free/thumb/concept-of-remote-team-2112518-1785598.png"
+      alt=""
+    />
+  </div>
 </div>
-</ng-template>
+
+<!-- CATEGORİES -->
+<div class="categories-container">
+  <div class="categorie-name">
+    <h1>Reparti</h1>
+  </div>
+  <div class="categories">
+    <div class="categorie-grid">
+      <div class="categorie-col" id="col-one">
+        <div class="categorie-image-wrapper">
+          <img src="https://picsum.photos/id/257/400/400" alt="" />
+        </div>
+        <div class="categories-text-ctn">
+          <div class="ctg-head">
+            <h2>sviluppo</h2>
+          </div>
+          <div class="ctg-text">
+            <p></p>
+            <p>
+              Lo sviluppo software coinvolge la creazione <br />
+              È l'arte di trasformare concetti in <br />
+              codice funzionale.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="categorie-col" id="col-two">
+        <div class="categorie-image-wrapper">
+          <img src="https://picsum.photos/id/222/400/400" alt="" />
+        </div>
+        <div class="categories-text-ctn">
+          <div class="ctg-head">
+            <h2>Area Personale</h2>
+          </div>
+          <div class="ctg-text">
+            <p>
+              Il tuo mondo<br />
+              <span>Ore lavorate: {{ oreLavorate }}</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="categorie-grid">
+      <div class="categorie-col" id="col-tree">
+        <div class="categorie-image-wrapper">
+          <img src="https://picsum.photos/id/234/400/400" alt="" />
+        </div>
+        <div class="categories-text-ctn">
+          <div class="ctg-head">
+            <h2>Marketing</h2>
+          </div>
+          <div class="ctg-text">
+            <p>
+              Il marketing rappresenta l'arte di connettere <br />
+              persone con prodotti, servizi e idee. <br />
+              È la capacità di creare valore.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="categorie-col" id="col-four">
+        <div class="categorie-image-wrapper">
+          <img src="https://picsum.photos/id/237/400/400" alt="" />
+        </div>
+        <div class="categories-text-ctn">
+          <div class="ctg-head">
+            <h2>Sport</h2>
+          </div>
+          <div class="ctg-text">
+            <p>
+              Lo sport è un'attività fisica e competitiva che <br />
+              promuove la salute, il benessere e la socializzazione. <br />
+              Unisce persone attraverso la passione e la competizione.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
