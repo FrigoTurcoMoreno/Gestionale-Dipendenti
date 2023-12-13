@@ -17,6 +17,7 @@ export class UpdateComponent {
 
   ngOnInit(): void {
     this.userToUpdate = this.utenteService.UserToUpdate;
+    this.userToUpdate.password='';
     console.log(this.userToUpdate);
     this.formReattivoUpdate = new FormGroup({
       email: new FormControl(null, [Validators.email, Validators.required]),
@@ -32,12 +33,12 @@ export class UpdateComponent {
         Validators.minLength(2),
         Validators.required,
       ]),
-      isAdmin: new FormControl(false),
+      admin: new FormControl(false),
     });
   }
 
   onUpdate() {
-    console.log(this.formReattivoUpdate.value);
+    console.log(this.userToUpdate);
     this.utenteService.register(this.userToUpdate).subscribe((utente) => {
       if (utente) {
         this.router.navigate(["logsAdminPanel"]);
