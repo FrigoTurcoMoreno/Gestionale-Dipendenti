@@ -63,5 +63,12 @@ export class LogsService{
   getMyLogs():Observable<any>{
     return this.http.get<Logs>(url+'/myLogs/'+this.utenteService.getId());
   }
+  getOreMensili():Observable<number>{
+    const params={
+      id_utente:this.utenteService.getId()
+    }
+    return this.http.get<number>(url+'/oreLavorate',{params});
+  }
+
 
 }

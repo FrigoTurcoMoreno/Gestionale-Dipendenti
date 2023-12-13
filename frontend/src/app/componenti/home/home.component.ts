@@ -9,8 +9,12 @@ import { LogsService } from 'src/app/servizi/logs.service';
 export class HomeComponent implements OnInit{
   constructor(private logService:LogsService){}
   entrato?:boolean;
+  oreLavorate!:number;
   ngOnInit(): void {
     this.getLog();
+    this.logService.getOreMensili().subscribe((data)=>{
+      this.oreLavorate=data;
+    });
   }
   getLog(){
     this.logService.getLogBE().subscribe((data)=>{
