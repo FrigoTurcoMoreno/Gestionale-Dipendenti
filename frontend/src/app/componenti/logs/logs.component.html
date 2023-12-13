@@ -6,7 +6,9 @@
             <th>Entrata</th>
             <th>Uscita</th>
             <th>Nome Utente</th>
-            <th *ngIf="isAdmin()">cancella</th>
+            <th *ngIf="isAdmin()">Cancella</th>
+            <th *ngIf="isAdmin()">Modifica</th>
+            
           </tr>
         </thead>
         <tbody>
@@ -27,8 +29,8 @@
             
             <td>{{ log.u.nome }}</td>
             <td *ngIf="isAdmin()"><button (click)="cancellaLog(log.id)" class="btn btn-danger"> cancella</button></td>
-            <td *ngIf="isAdmin() && log.id!=idLogToUpdate"><button (click)="updateHour(log.id)" class="btn btn-danger"> update</button></td>
-            <td *ngIf="isAdmin() && log.id==idLogToUpdate"><button (click)="updateDate()" class="btn btn-danger"> send</button></td>
+            <td *ngIf="isAdmin() && log.id!=idLogToUpdate"><button (click)="updateHour(log.id)" class="btn btn-danger"> modifica orari</button></td>
+            <td *ngIf="isAdmin() && log.id==idLogToUpdate"><button (click)="updateDate()" class="btn btn-danger"> invia modifiche</button></td>
             
           </tr>
         </tbody>
