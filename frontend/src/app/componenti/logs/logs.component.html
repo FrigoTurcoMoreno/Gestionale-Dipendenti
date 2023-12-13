@@ -6,6 +6,7 @@
             <th>Entrata</th>
             <th>Uscita</th>
             <th>Nome Utente</th>
+            <th *ngIf="isAdmin()">cancella</th>
           </tr>
         </thead>
         <tbody>
@@ -13,6 +14,8 @@
             <td>{{ log.entrata }}</td>
             <td>{{ log.uscita }}</td>
             <td>{{ log.u.nome }}</td>
+            <td *ngIf="isAdmin()"><button (click)="cancellaLog(log.id)" class="btn btn-danger"> cancella</button></td>
+            
           </tr>
         </tbody>
       </table>

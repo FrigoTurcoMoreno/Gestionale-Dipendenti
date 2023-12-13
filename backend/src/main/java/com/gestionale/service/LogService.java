@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface LogService {
 
-    public boolean eliminaLog(Integer id_log);
+    public boolean eliminaLog(Integer id_log,Integer id_utente);
     public Integer oreLavorate(Integer id_utente);
 
     public Log getLogAttivi(Integer id_utente);

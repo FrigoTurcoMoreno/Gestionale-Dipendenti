@@ -34,10 +34,10 @@ public class LogController {
 
         return logService.aggiungiUscitalog(id_log);
     }
-    @DeleteMapping("/log/{id_log}")
-    public boolean eliminaLog(@PathVariable Integer id_log){
+    @DeleteMapping("/log/{id_utente}")
+    public boolean eliminaLog(@PathVariable Integer id_utente,@RequestParam Integer id_log){
 
-        return logService.eliminaLog(id_log);
+        return logService.eliminaLog(id_log,id_utente);
     }
 
     @GetMapping("/logs/{id}")

@@ -69,6 +69,12 @@ export class LogsService{
     }
     return this.http.get<number>(url+'/oreLavorate',{params});
   }
+  cancellaLog(id_log:number):Observable<number>{
+    const params={
+      id_log:id_log
+    }
+    return this.http.delete<number>(url+'/log/'+this.utenteService.getId(),{params});
+  }
 
 
 }

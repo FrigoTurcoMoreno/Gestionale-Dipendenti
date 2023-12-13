@@ -22,8 +22,9 @@ public class LogServiceImpl implements LogService{
     private UtenteRepository utenteRepository;
 
     @Override
-    public boolean eliminaLog(Integer id_log){
-        if(logRepository.findById(id_log).isPresent()){
+    public boolean eliminaLog(Integer id_log,Integer id_utente){
+        Utente utenteAdmin= utenteRepository.findById(id_utente).orElse(null);
+        if(utenteAdmin!=null && utenteAdmin.isAdmin() && utenteAdmin.isAbilitato() && logRepository.findById(id_log).isPresent()){
             logRepository.deleteById(id_log);
             return true;
         }else{
